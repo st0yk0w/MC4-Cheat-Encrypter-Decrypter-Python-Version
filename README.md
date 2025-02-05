@@ -1,6 +1,6 @@
 # MC4 Cheat Encrypter/Decrypter (Python Version)
 
-This is a **Python 3** port of the **MC4 Cheat Decrypter** originally written in C by [bucanero](https://github.com/bucanero/save-decrypters/tree/master/mc4-cheat-decrypter).  
+This is a **Python** port of the **MC4 Cheat Decrypter** originally written in C by [bucanero](https://github.com/bucanero/save-decrypters/tree/master/mc4-cheat-decrypter).  
 It encrypts/decrypts `.mc4` cheat files with AES‐256‐CBC and Base64.
 
 ## Features & Improvements
