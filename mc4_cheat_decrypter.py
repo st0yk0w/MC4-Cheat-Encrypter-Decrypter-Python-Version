@@ -89,15 +89,15 @@ def encrypt_data(data):
     """
     print(f"[*] Total XML Size: {len(data)} bytes")
 
-    # 1) PKCS#7 padding
+    # PKCS#7 padding
     padded_data = pkcs7_pad(data, 16)
     print(f"[*] Size after PKCS#7 padding: {len(padded_data)} bytes")
 
-    # 2) AES-256-CBC encrypt
+    # AES-256-CBC encrypt
     cipher = AES.new(MC4_AES256CBC_KEY, AES.MODE_CBC, IV=MC4_AES256CBC_IV)
     encrypted = cipher.encrypt(padded_data)
 
-    # 3) Base64-encode
+    # Base64-encode
     try:
         b64_data = base64.b64encode(encrypted)
     except Exception:
@@ -107,7 +107,7 @@ def encrypt_data(data):
     print(f"[*] Total Encrypted Size (Base64): {len(b64_data)} bytes")
     print("[*] Encrypted File Successfully!\n")
 
-    # 4) Return final result
+    # Return final result
     return b64_data
 
 def main():
@@ -118,7 +118,6 @@ def main():
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    # Mutually exclusive group for -d / --decrypt or -e / --encrypt
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-d", "--decrypt", action="store_true", help="Decrypt file => output .shn")
     group.add_argument("-e", "--encrypt", action="store_true", help="Encrypt file => output .mc4")
@@ -138,9 +137,6 @@ def main():
     # Read the file
     data, length = read_buffer(cheat_file)
 
-    # Figure out output name:
-    # For decrypt => produce "xxx.shn"
-    # For encrypt => produce "xxx.mc4"
     base, ext = os.path.splitext(cheat_file)
     if args.decrypt:
         output_name = base + ".shn"
