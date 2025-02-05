@@ -2,8 +2,6 @@
 #
 # MC4 Cheat Decrypter v0.1 by stoykow
 # Based on bucanero's original C implementation
-# Modified to produce separate output file (.mc4/.shn)
-# and remove extra PKCS#7 padding on decrypt
 
 import sys
 import os
